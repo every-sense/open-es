@@ -72,7 +72,7 @@ module DataAbstraction
                                        "data" => {
                                          "at" => "2014-10-16 07:51:18 GMT",
                                          "memo" => "",
-                                         "unit" => "deg/s^2",
+                                         "unit" => "deg/s",
                                          "values" => ["5.000000", "2.000000", "3.000000"]}
                                      })
     p ret
@@ -85,7 +85,7 @@ module DataAbstraction
                                        "sensor_class_name" => "TemperatureSensor",
                                        "data_class_name" => "AirTemperature",
                                        "data" => {
-                                         "unit" => "degree Celsium",
+                                         "unit" => "degree Celsius",
                                          "location" => [35.708507, 138.742869],
                                          "value" => 7.1,
                                          "memo" => "温度(高価)",
@@ -158,5 +158,9 @@ module DataAbstraction
     p ret.value
     p ret.value.value
 
+    p Unit::LocationValue.accuracy_unit
+    p Unit::LocationValue.standard_unit
+    p Unit::TemperatureValue.accuracy_unit
+    p Unit::TemperatureValue.standard_unit
   end
 end

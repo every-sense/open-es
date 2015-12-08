@@ -48,6 +48,9 @@ module DataAbstraction
     def standard_datum
       STANDARD_DATUM
     end
+    def self.standard_unit
+      standard_datum
+    end
     def standard_unit
       standard_datum
     end

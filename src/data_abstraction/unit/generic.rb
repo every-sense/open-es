@@ -19,9 +19,12 @@ module DataAbstraction::Unit
         if ( unit == self.standard_unit )
           value.value
         else
-          value.standard_to_requested_value(unit)
+          value.to_requested(unit)
         end
       end
+    end
+    def self.accuracy_unit
+      self.standard_unit
     end
     def unit
       @unit
