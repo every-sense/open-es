@@ -17,6 +17,9 @@ module DataAbstraction::Unit
         raise RangeError, "invalid unit '#{unit}'"
       end
     end
+    def self.standard_unit
+      STANDARD_UNIT
+    end
     def standard_unit
       STANDARD_UNIT
     end

@@ -10,11 +10,14 @@ module DataAbstraction::Unit
       @value = value
       @unit = unit
     end
-    def self.units
-      UNITS
+    def self.standard_unit
+      STANDARD_UNIT
     end
     def standard_unit
       STANDARD_UNIT
+    end
+    def self.units
+      UNITS
     end
     def to_standard
       self
