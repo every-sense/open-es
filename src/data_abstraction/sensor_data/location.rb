@@ -7,7 +7,7 @@ module DataAbstraction::SensorData
       ""
     end
     def self.unit_class
-      DataAbstraction::Location
+      DataAbstraction::Unit::LocationValue
     end
   end
 end
