@@ -2,7 +2,7 @@ module DataAbstraction::Unit
   class FigureValue < Generic
     STANDARD_UNIT = ""
     UNITS = [
-             [ "", "" ],
+             [ "", "", nil ],
             ]
     @@unit_table = unit_table(UNITS)
 
