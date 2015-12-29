@@ -45,12 +45,13 @@ module DataAbstraction::SensorData
       begin
         DataAbstraction::SensorData.const_get(entry['data_class_name'].to_sym).new(entry['data'], entry)
       rescue NameError
-        p "invalid data_class_name '#{entry['data_class_name']}' use Undef class"
+        print "invalid data_class_name '#{entry['data_class_name']}' use Undef class"
         Undef.new(entry['data'], entry)
       rescue => e
-        p e
-        p "exit"
-        #exit
+        print e.to_s
+        print $@.join("\n")
+#        print "exit"
+#        exit
       end
     end
     def data_class_name
@@ -113,7 +114,7 @@ module DataAbstraction::SensorData
       if ( defined? @values )
         @values
       else
-        nil2
+        nil
       end
     end
     def to_requested!(unit = nil)
