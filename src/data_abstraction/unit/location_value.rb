@@ -9,6 +9,7 @@ module DataAbstraction::Unit
     @@unit_table = unit_table(UNITS)
 
     def initialize(values, unit = STANDARD_UNIT)
+      unit = STANDARD_UNIT if ( !unit )
       if  ( @@unit_table[unit] )
         @values = values
         @unit = unit
