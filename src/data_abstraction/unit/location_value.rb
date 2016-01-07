@@ -3,7 +3,7 @@ module DataAbstraction::Unit
     STANDARD_UNIT = "degree"
     ACCURACY_UNIT = "m"
     UNITS = [
-             [ "degree",  "degree" ],
+             [ "degree",  "degree", "" ],
              [ "dms", "dms", "dd.mmss" ],
             ]
     @@unit_table = unit_table(UNITS)
