@@ -23,9 +23,15 @@ module DataAbstraction::SensorData
       super(data, meta_values)
       if  ( data['values'] )
         @values = Array.new
-        @values[0] = LocationValue.new(data['values']['latitude'] ? data['values']['latitude'].to_f : ( data['values'][0] ? data['values'][0].to_f : nil ), @unit)
-        @values[1] = LocationValue.new(data['values']['longitude'] ? data['values']['longitude'].to_f : ( data['values'][1] ? data['values'][1].to_f : nil ), @unit)
-        @values[2] = LocationValue.new(data['values']['elevation'] ? data['values']['elevation'].to_f : ( data['values'][2] ? data['values'][2].to_f : nil ), @unit)
+        if ( data['values'].instance_of? Array )
+          @values[0] = LocationValue.new(data['values'][0].to_f, @unit)
+          @values[1] = LocationValue.new(data['values'][1].to_f, @unit)
+          @values[2] = LocationValue.new(data['values'][2].to_f, @unit)
+        elsif ( data['values'].instance_of? Hash )
+          @values[0] = LocationValue.new(data['values']['latitude'].to_f, @unit)
+          @values[1] = LocationValue.new(data['values']['longitude'].to_f, @unit)
+          @values[2] = LocationValue.new(data['values']['elevation'].to_f @unit)
+        end
       else
         @value = LocationValue.new(data['value'], @unit)
       end
