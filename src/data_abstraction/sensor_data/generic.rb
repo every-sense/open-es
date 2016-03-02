@@ -2,31 +2,25 @@ module DataAbstraction::SensorData
   class Generic
     include DataAbstraction::Unit
     def initialize(values, meta_values = {})
-      @sensor_class_name = meta_values['sensor_class_name'] 
-      @sensor_name = meta_values['sensor_name'] 
-      at = values['at']
-      if ( at.instance_of? Time )
-        @at = at
-      elsif ( at.instance_of? String )
-        @at = Time.parse(at)
-      end
+      @sensor_class_name = meta_values['sensor_class_name']  if ( meta_value['sensor_class_name'] )
+      @sensor_name = meta_values['sensor_name']  if ( meta_value['sensor_name'] )
       @accuracy = values['accuracy'].to_f if ( values['accuracy'] )
-      @unit = values['unit']
-      @memo = values['memo']
-      
+      @unit = values['unit'] if ( values['unit'] )
+      @memo = values['memo'] if ( values['memo'] )
+      @sensor_id = meta_values['sensor_id'].to_i if ( meta_values['sensor_id'] )
+      @device_uuid = meta_values['device_uuid'] if ( meta_values['device_uuid'] )
+      @farm_uuid = meta_values['farm_uuid'] if ( meta_values['farm_uuid'] )
+      if ( values['at'] )
+        at = values['at']
+        if ( at.instance_of? Time )
+          @at = at
+        elsif ( at.instance_of? String )
+          @at = Time.parse(at)
+        end
+      end
       if  (( values['location'] ) ||
            ( values['elevation'] ))
         @location = DataAbstraction::Location.new(values)
-      end
-      
-      if ( meta_values['sensor_id'] )
-        @sensor_id = meta_values['sensor_id'].to_i
-      end
-      if ( meta_values['device_uuid'] )
-        @device_uuid = meta_values['device_uuid']
-      end
-      if ( meta_values['farm_uuid'] )
-        @farm_uuid = meta_values['farm_uuid']
       end
     end
     def farm_uuid
@@ -71,6 +65,13 @@ module DataAbstraction::SensorData
     end
     def at
       @at
+    end
+    def at=(value)
+      if ( value.instance_of? Time )
+        @at = value
+      elsif ( value.instance_of? String )
+        @at = Time.parse(value)
+      end
     end
     def unit
       @unit
@@ -155,7 +156,9 @@ module DataAbstraction::SensorData
     end
     def to_simple_hash
       data = Hash.new
-      data['at'] = @at.to_s
+      if ( defined? @at )
+        data['at'] = @at.to_s
+      end
       data['memo'] = @memo
       if ( defined? @location )
         data['location'] = @location.location(2)
