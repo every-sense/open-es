@@ -2,8 +2,8 @@ module DataAbstraction::SensorData
   class Generic
     include DataAbstraction::Unit
     def initialize(values, meta_values = {})
-      @sensor_class_name = meta_values['sensor_class_name']  if ( meta_value['sensor_class_name'] )
-      @sensor_name = meta_values['sensor_name']  if ( meta_value['sensor_name'] )
+      @sensor_class_name = meta_values['sensor_class_name']  if ( meta_values['sensor_class_name'] )
+      @sensor_name = meta_values['sensor_name']  if ( meta_values['sensor_name'] )
       @accuracy = values['accuracy'].to_f if ( values['accuracy'] )
       @unit = values['unit'] if ( values['unit'] )
       @memo = values['memo'] if ( values['memo'] )

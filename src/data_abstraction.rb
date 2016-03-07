@@ -5,6 +5,8 @@ module DataAbstraction
   end
   module Unit
   end
+  module Value
+  end
   class Location
   end
 end
