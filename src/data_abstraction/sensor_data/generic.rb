@@ -118,6 +118,9 @@ module DataAbstraction::SensorData
         nil
       end
     end
+    def memo
+      @memo
+    end
     def to_requested!(unit = nil)
       if ( unit )
         if  ( defined? @value )
