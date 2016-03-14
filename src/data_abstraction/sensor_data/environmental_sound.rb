@@ -6,6 +6,9 @@ module DataAbstraction::SensorData
       data['values'].each do | value |
         @values << SoundLevelValue.new(value.to_f, @unit)
       end
+      data['value'].each do | value |
+        @values << SoundLevelValue.new(value.to_f, @unit)
+      end
     end
     def self.unit_class
       SoundLevelValue
