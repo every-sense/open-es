@@ -170,7 +170,8 @@ module DataAbstraction::SensorData
         end
         data['datum'] = @location.datum
       end
-      if ( defined? @value )
+      if (( defined? @value ) &&
+          ( @value ))
         data['value'] = @value.value
         data['unit'] = @value.unit if @value.unit
       else
