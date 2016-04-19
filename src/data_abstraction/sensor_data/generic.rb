@@ -40,9 +40,9 @@ module DataAbstraction::SensorData
       #p entry['data_class_name']
       begin
         DataAbstraction::SensorData.const_get(entry['data_class_name'].to_sym).new(entry['data'], entry)
-      rescue NameError
-        print "invalid data_class_name '#{entry['data_class_name']}' use Undef class"
-        Undef.new(entry['data'], entry)
+#      rescue NameError
+#        print "invalid data_class_name '#{entry['data_class_name']}' use Undef class"
+#        Undef.new(entry['data'], entry)
       rescue => e
         print e.to_s
         print $@.join("\n")
