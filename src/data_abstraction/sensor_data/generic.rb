@@ -19,6 +19,8 @@ module DataAbstraction::SensorData
         end
       end
       if  (( values['location'] ) ||
+           ( values['longtude'] ) ||
+           ( values['latitude'] ) ||
            ( values['elevation'] ))
         @location = DataAbstraction::Location.new(values)
       end
@@ -172,7 +174,16 @@ module DataAbstraction::SensorData
       end
       if (( defined? @value ) &&
           ( @value ))
-        data['value'] = @value.value
+        if  ( @value.value.instance_of? Array )
+        data['values'] = Array.new
+          @value.value.each do | value |
+            if  ( value )
+              data['values'] << value.value
+            end
+          end
+        else
+          data['value'] = @value.value
+        end
         data['unit'] = @value.unit if @value.unit
       else
         data['unit'] = @unit if @unit

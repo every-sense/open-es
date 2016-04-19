@@ -1,5 +1,7 @@
+require_relative 'unit'
 module DataAbstraction
   class Location
+    include ::DataAbstraction::Unit
     STANDARD_DATUM = "WGS84"
     DATUMS = [
               [ "wgs84", "WGS84" ],
@@ -19,31 +21,54 @@ module DataAbstraction
       h
     end
     @@datum_table = datum_table(DATUMS)
+
     def initialize(values)
-      @latitude = values['latitude'] ? values['latitude'].to_f : ( values['location'][0] ? values['location'][0].to_f : nil )
-      @longitude = values['longitude'] ? values['longitude'].to_f : ( values['location'][1] ? values['location'][1].to_f : nil )
-      @elevation = values['elevation'] ? values['elevation'].to_f : ( values['location'][2] ? values['location'][2].to_f : nil )
-      @datum = ( values['datum'] ) ? values['datum'] : 'WGS84'
+      @dimension_unit = values['dimension_unit'] ? values['dimension_unit']  : "m"
+      @unit = values['unit'] ? values['unit'] : "degree"
+      @datum = ( values['datum'] ) ? values['datum'] : 'WGS84',
+      @values = Array.new
+      if ( values['values'] )
+        @values[0] = LocationValue.new(values['values'][0].to_f, @unit)
+        @values[1] = LocationValue.new(values['values'][1].to_f, @unit)
+        @values[2] = DimensionValue.new(values['values'][2].to_f, @dimansion_unit)
+      elsif ( values['location'] )
+        @values[0] = LocationValue.new(values['location'][0].to_f, @unit)
+        @values[1] = LocationValue.new(values['location'][1].to_f, @unit)
+        @values[2] = DimensionValue.new(values['location'][2].to_f, @dimansion_unit)
+      else
+        @values[0] = LocationValue.new(values['latitude'].to_f, @unit)
+        @values[1] = LocationValue.new(values['longitude'].to_f, @unit)
+        @values[2] = DimensionValue.new(values['elevation'].to_f, @dimansion_unit)
+      end
     end
     def location(dim = 2)
       if (( dim == 2 ) ||
           ( !@elevation ))
-        [ @longitude, @latitude ]
+        [ @latitude, @longitude ]
       else
-        [ @longitude, @latitude, @elevation ]
+        [ @latitude, @longitude, @elevation ]
       end
+    end
+    def values
+      @values
+    end
+    def value
+      @values
     end
     def datum
       @datum
     end
+    def unit
+      @unit
+    end
     def elevation
-      @elevation
+      @values[2]
     end
     def longitude
-      @longitude
+      @values[1]
     end
     def latitude
-      @latitude
+      @values[0]
     end
     def standard_datum
       STANDARD_DATUM
