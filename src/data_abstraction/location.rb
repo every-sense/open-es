@@ -58,11 +58,10 @@ module DataAbstraction
       end
     end
     def location(dim = 2)
-      if (( dim == 2 ) ||
-          ( !@elevation ))
-        [ @latitude, @longitude ]
+      if ( dim == 2 )
+        [ @values[0], @values[1] ]
       else
-        [ @latitude, @longitude, @elevation ]
+        [ @values[0], @values[1], @values[2] ]
       end
     end
     def values

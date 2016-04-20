@@ -166,11 +166,12 @@ module DataAbstraction::SensorData
       end
       data['memo'] = @memo
       if ( defined? @location )
-        data['location'] = @location.location(2)
+        location = @location.location(2)
+        data['location'] = [ location[0].value, location[1].value ]
         if  ( @location.elevation )
-          data['elevation'] = @location.elevation
+          data['elevation'] = @location.elevation.value
         end
-        data['datum'] = @location.datum
+        data['datum'] = @location.datum.value
       end
       if (( defined? @value ) &&
           ( @value ))

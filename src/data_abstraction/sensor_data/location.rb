@@ -23,9 +23,6 @@ module DataAbstraction::SensorData
       super(data, meta_values)
       @value = DataAbstraction::Location.new(data)
     end
-    def build_part
-      "\"values\":[#{@value.values[0].value},#{@value.values[1].value},#{@value.values[2].value}],\"unit\":\"#{@value.unit}\",\"datum\":\"#{@value.datum}\""
-    end
     def self.unit_class
       DataAbstraction::Unit::LocationValue
     end
