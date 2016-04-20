@@ -171,7 +171,7 @@ module DataAbstraction::SensorData
         if  ( @location.elevation )
           data['elevation'] = @location.elevation.value
         end
-        data['datum'] = @location.datum.value
+        data['datum'] = @location.datum
       end
       if (( defined? @value ) &&
           ( @value ))
