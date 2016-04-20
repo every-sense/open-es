@@ -25,7 +25,7 @@ module DataAbstraction
     def initialize(values)
       @dimension_unit = values['dimension_unit'] ? values['dimension_unit']  : "m"
       @unit = values['unit'] ? values['unit'] : "degree"
-      @datum = ( values['datum'] ) ? values['datum'] : 'WGS84',
+      @datum = ( values['datum'] ) ? values['datum'] : 'WGS84'
       @values = Array.new
       if ( values['values'] )
         @values[0] = LocationValue.new(values['values'][0].to_f, @unit)
