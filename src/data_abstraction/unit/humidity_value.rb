@@ -2,7 +2,7 @@ module DataAbstraction::Unit
   class HumidityValue < Generic
     STANDARD_UNIT = "%RH"
     UNITS = [
-             [ "%RH", "%RH", "%%RH", "%rh" ],
+             [ "%RH", "%RH", "%%RH", "%rh", "RH", "rh" ],
 #             [ "g/m^3", "g/m^3" ]
             ]
     @@unit_table = unit_table(UNITS)
