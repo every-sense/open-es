@@ -2,7 +2,7 @@ module DataAbstraction::Unit
   class StepValue < Generic
     STANDARD_UNIT = "Step"
     UNITS = [
-             [ "step", "Step", "step" ]
+             [ "step", "Step", "step", "steps" ]
             ]
     @@unit_table = unit_table(UNITS)
 

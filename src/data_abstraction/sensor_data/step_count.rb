@@ -2,7 +2,7 @@ module DataAbstraction::SensorData
   class StepCount < Generic
     def initialize(data, meta_values = {})
       super(data, meta_values)
-      @value = StepValue.new(data['value'].to_i)
+      @value = StepValue.new(data['value'].to_i, @unit)
     end
     def self.unit_class
       StepValue
