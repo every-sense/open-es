@@ -164,7 +164,7 @@ module DataAbstraction::SensorData
       if ( defined? @at )
         data['at'] = @at.to_s
       end
-      data['memo'] = @memo
+      data['memo'] = @memo if @memo
       if ( defined? @location )
         data['location'] = @location.to_hash
       end
