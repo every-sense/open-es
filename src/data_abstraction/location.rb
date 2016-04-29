@@ -100,6 +100,12 @@ module DataAbstraction
     def self.units
       datums
     end
+    def to_hash
+      { 'latitude' => @values[0].value,
+        'longitude' => @values[1].value,
+        'elevation' => @values[2].value,
+        'datum' => @datum }
+    end
     def to_standard
       case @@datum_table[@datum]
       when "tokyo"

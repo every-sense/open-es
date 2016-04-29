@@ -153,7 +153,7 @@ module DataAbstraction::SensorData
       ret['device_uuid'] = @device_uuid if @device_uuid
       ret['farm_uuid'] = @farm_uuid if @farm_uuid
       ret['sensor_class_name'] = self.sensor_class_name if  ( self.sensor_class_name )
-      ret['sensor_name'] = self.sensor_name
+      ret['sensor_name'] = self.sensor_name if ( self.sensor_name )
       ret['data_class_name'] = self.data_class_name
       
       ret['data'] = self.to_simple_hash
@@ -166,12 +166,7 @@ module DataAbstraction::SensorData
       end
       data['memo'] = @memo
       if ( defined? @location )
-        location = @location.location(2)
-        data['location'] = [ location[0].value, location[1].value ]
-        if  ( @location.elevation )
-          data['elevation'] = @location.elevation.value
-        end
-        data['datum'] = @location.datum
+        data['location'] = @location.to_hash
       end
       if (( defined? @value ) &&
           ( @value ))
