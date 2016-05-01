@@ -18,10 +18,11 @@ module DataAbstraction::SensorData
           @at = Time.parse(at)
         end
       end
-      if  (( values['location'] ) ||
-           ( values['longtude'] ) ||
-           ( values['latitude'] ) ||
-           ( values['elevation'] ))
+      if  ( values['location'] )
+        @location = DataAbstraction::Location.new(values['location'])
+      elsif (( values['longtude'] ) ||
+             ( values['latitude'] ) ||
+             ( values['elevation'] ))
         @location = DataAbstraction::Location.new(values)
       end
     end

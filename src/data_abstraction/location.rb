@@ -39,18 +39,6 @@ module DataAbstraction
             @values[2] = DimensionValue.new(0.0, @dimansion_unit)
           end
         end
-      elsif ( values['location'] )
-        @values[0] = LocationValue.new(values['location'][0].to_f, @unit)
-        @values[1] = LocationValue.new(values['location'][1].to_f, @unit)
-        if  ( values['elevation'] )
-          @values[2] = DimensionValue.new(values['elevation'].to_f, @dimansion_unit)
-        else
-          if  ( values['location'].size == 3 )
-            @values[2] = DimensionValue.new(values['location'][2].to_f, @dimansion_unit)
-          else
-            @values[2] = DimensionValue.new(0.0, @dimansion_unit)
-          end
-        end
       else
         @values[0] = LocationValue.new(values['latitude'].to_f, @unit)
         @values[1] = LocationValue.new(values['longitude'].to_f, @unit)
