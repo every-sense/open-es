@@ -1,4 +1,5 @@
 require_relative 'unit/generic'
+require_relative 'unit/unknown_value'
 require_relative 'unit/acceleration_value'
 require_relative 'unit/dimension_value'
 require_relative 'unit/magnetic_value'
