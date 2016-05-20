@@ -125,6 +125,7 @@ module DataAbstraction::SensorData
       @memo
     end
     def to_requested!(unit = nil)
+      unit = nil if ( unit == 'none' )
       if ( unit )
         if  ( defined? @value )
           @value = @value.to_requested(unit)
@@ -161,7 +162,12 @@ module DataAbstraction::SensorData
       ret
     end
     def to_simple_hash
-      data = Hash.new
+      if (( @data ) &&
+          ( @data.instance_of? Hash ))
+        data = @data
+      else
+        data = Hash.new
+      end
       if ( defined? @at )
         data['at'] = @at.to_s
       end

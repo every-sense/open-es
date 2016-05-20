@@ -11,10 +11,10 @@ module DataAbstraction::SensorData
     def self.unit_class
       UnknownValue
     end
-    def to_hash
-      ret = super
-      ret['data'] = @data
-      ret
-    end
+#    def to_hash
+#      ret = super
+#      ret['data'] = @data
+#      ret
+#    end
   end
 end

@@ -36,10 +36,16 @@ module DataAbstraction::Unit
       "\"value\":\"#{@value}\"" + ( @unit ? ",\"unit\":\"#{@unit}\"" : "" )
     end
     def to_hash
-      {
-        "value" => @value,
-        "unit" => @unit
-      }
+      if  ( @unit )
+        {
+          "value" => @value,
+          "unit" => @unit
+        }
+      else
+        {
+          "value" => @value
+        }
+      end
     end
   end
 end

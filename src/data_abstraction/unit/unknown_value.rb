@@ -1,6 +1,6 @@
 module DataAbstraction::Unit
   class UnknownValue < Generic
-    STANDARD_UNIT = ""
+    STANDARD_UNIT = nil
     UNITS = [
              [ "", "", nil ],
             ]
@@ -8,7 +8,7 @@ module DataAbstraction::Unit
 
     def initialize(value, unit = STANDARD_UNIT)
       @value = value
-      @unit = unit
+      @unit = unit if unit
     end
     def self.standard_unit
       nil
