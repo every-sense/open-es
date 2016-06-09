@@ -18,9 +18,13 @@ require_relative 'unit/cycle_value'
 require_relative 'unit/power_value'
 require_relative 'unit/concentration_value'
 require_relative 'unit/conductivity_value'
+
 require_relative 'unit/location_value'
 require_relative 'unit/figure_value'
 require_relative 'unit/simple_string'
 require_relative 'unit/electric_current_value'
 require_relative 'unit/count_value'
 require_relative 'unit/magnitude_value'
+
+require_relative 'unit/duration_value'
+require_relative 'unit/energy_value'

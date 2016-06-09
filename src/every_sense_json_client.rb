@@ -41,12 +41,15 @@ module EverySense
       args['password'] = pass
       _get("data", "#{recipe_uuid}.#{format}", args)
     end
+    def device_data(uuid, *args)
+      _get('device_data', uuid, *args)
+    end
 
     def method_missing(name, *args)
       if ( name =~ /^put_/ )
         _post(name, args)
       else
-        _get(name, args)
+        _get(name, args[0], args[1..-1])
       end
     end
   private
@@ -103,7 +106,6 @@ module EverySense
     end
     def _get(func, file, params = {}, limit = 10)
       raise ArgumentError, 'HTTP redirect too deep' if limit == 0
-
       arg = nil
       params.each do | key, val |
         if ( !arg )
@@ -112,6 +114,7 @@ module EverySense
           arg << "&#{CGI.escape(key.to_s)}=#{CGI.escape(val.to_s)}"
         end
       end
+      #p arg
       if ( arg )
         req = Net::HTTP::Get.new("/#{func}/#{file}?#{arg}")
       else

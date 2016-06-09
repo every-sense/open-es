@@ -36,7 +36,7 @@ module DataAbstraction::Unit
         r = ( @value - d ) * 100.0
         m = r.to_i
         s = ( r - m ) * 100.0
-        LocationValue(d + ( m + s / 60.0 ) / 60.0, STANDARD_UNIT)
+        LocationValue.new(d + ( m + s / 60.0 ) / 60.0, STANDARD_UNIT)
       else
         self
       end
@@ -50,7 +50,7 @@ module DataAbstraction::Unit
           r = ( standard.value - d ) * 60.0
           d2 = r.to_i
           d4 = ( r - d2 ) * 60.0
-          LocationValue(d + ( d2 + d4 / 100.0 ) / 100.0, unit)
+          LocationValue.new(d + ( d2 + d4 / 100.0 ) / 100.0, unit)
         else
           self
         end

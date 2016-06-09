@@ -131,6 +131,67 @@ sensors = [
                'sensor' => "aaabbbcccddd",
                'receiver' => "XXXX"
              }
+           }, {
+             'data_class_name' => 'PersonHeartPulseRate',
+             'data' => {
+               'value' => 60,
+               'unit' => "bpm"
+             }
+           }, {
+             'data_class_name' => 'PersonHeartPulseRate',
+             'data' => {
+               'value' => 60
+             }
+           }, {
+             'data_class_name' => 'PersonTravelDistance',
+             'data' => {
+               'value' => 500
+             }
+           }, {
+             'data_class_name' => 'PersonFloorNumber',
+             'data' => {
+               'value' => 10
+             }
+           }, {
+             'data_class_name' => 'PersonExpenditureCalory',
+             'data' => {
+               'value' => 200
+             }
+           }, {
+             'data_class_name' => 'PersonSleepDuration',
+             'data' => {
+               'value' => 8
+             }
+           }, {
+             'data_class_name' => 'PersonSleepQuality',
+             'data' => {
+               'value' => "aaa"
+             }
+           }, {
+             'data_class_name' => 'PersonExerciseKind',
+             'data' => {
+               'value' => "running"
+             }
+           }, {
+             'data_class_name' => 'PersonSedentaryDuration',
+             'data' => {
+               'value' => 20
+             }
+           }, {
+             'data_class_name' => 'PersonLightlyActiveDuration',
+             'data' => {
+               'value' => 20
+             }
+           }, {
+             'data_class_name' => 'PersonFairlyActiveDuration',
+             'data' => {
+               'value' => 20
+             }
+           }, {
+             'data_class_name' => 'PersonVeryActiveDuration',
+             'data' => {
+               'value' => 20
+             }
            }
           ]
 

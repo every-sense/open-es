@@ -2,7 +2,6 @@ module DataAbstraction::Unit
   class SimpleString < Generic
     STANDARD_UNIT = ""
     UNITS = [
-             [ "", "", nil ],
             ]
     @@unit_table = unit_table(UNITS)
 
@@ -16,7 +15,7 @@ module DataAbstraction::Unit
       nil
     end
     def self.units
-      nil
+      UNITS
     end
     def to_standard
       self

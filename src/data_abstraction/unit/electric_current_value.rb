@@ -59,7 +59,7 @@ module DataAbstraction::Unit
           ElectricCurrentValue.new(standard.value * 1000000000.0, unit)
         when "pico_a"
           ElectricCurrentValue.new(standard.value * 1000000000000.0, unit)
-        when "w"
+        when "a"
           standard
         else
           nil

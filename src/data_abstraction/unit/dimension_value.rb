@@ -9,7 +9,7 @@ module DataAbstraction::Unit
              [ "milli_meter", "mm" ],
              [ "centi_meter", "cm" ],
              [ "meter", "m" ],
-             [ "kilo_meter", "Km" ]
+             [ "kilo_meter", "Km", "km", "KM" ]
             ]
     @@unit_table = unit_table(UNITS)
 

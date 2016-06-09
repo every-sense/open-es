@@ -1,6 +1,6 @@
 Root = ENV['ROOT'] || "."
 
-$LOAD_PATH << "#{Root}/libs"
+$LOAD_PATH << "../../src"
 require 'data_abstraction'
 
 %w{
@@ -22,6 +22,14 @@ StepValue
 SymbolicValue
 TemperatureValue
 ConductivityValue
+LocationValue
+FigureValue
+SimpleString
+ElectricCurrentValue
+CountValue
+MagnitudeValue
+DurationValue
+EnergyValue
 }.each do | name |
   klass = DataAbstraction::Unit.const_get(name.to_sym)
   print "#{klass} ---\n"

@@ -4,6 +4,7 @@ module DataAbstraction::Unit
     UNITS = [
              [ "count", "Count", "count", "" ],
              [ "person", "person", "persons", "" ],
+             [ "floor", "floor", "floors", "" ],
             ]
     @@unit_table = unit_table(UNITS)
 
