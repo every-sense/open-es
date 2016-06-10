@@ -2,11 +2,11 @@ module DataAbstraction::Unit
   class DurationValue < Generic
     STANDARD_UNIT = "second"
     UNITS = [
-             [ "milli_second",  "milli_second", "milli_seconds", "ms" ],
-             [ "second",  "second", "seconds", "s" ],
-             [ "minute",  "minute", "minites", "m" ],
-             [ "hour",  "hour", "hours", "h" ],
-             [ "day",  "day", "days", "d" ],
+             [ "milli_second",  "ms", "milli_second", "milli_seconds", "msec" ],
+             [ "second",  "s", "second", "seconds", "sec" ],
+             [ "minute",  "m", "minute", "minites", "min" ],
+             [ "hour",  "h", "hour", "hours" ],
+             [ "day",  "d", "day", "days" ],
             ]
     @@unit_table = unit_table(UNITS)
 

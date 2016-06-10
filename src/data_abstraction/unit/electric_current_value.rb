@@ -2,7 +2,7 @@ module DataAbstraction::Unit
   class ElectricCurrentValue < Generic
     STANDARD_UNIT = "A"
     UNITS = [
-             [ "ka", "kA", "KA" ],
+             [ "ka", "KA", "kA" ],
              [ "a", "A" ],
              [ "milli_a", "mA" ],
              [ "micro_a", "uA", "micro A" ],

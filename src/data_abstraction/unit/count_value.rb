@@ -2,9 +2,9 @@ module DataAbstraction::Unit
   class CountValue < Generic
     STANDARD_UNIT = "Count"
     UNITS = [
-             [ "count", "Count", "count", "" ],
-             [ "person", "person", "persons", "" ],
-             [ "floor", "floor", "floors", "" ],
+             [ "count", "Counts", "count", "counts" ],
+             [ "person", "Persons", "persons", "person" ],
+             [ "floor", "Floors", "floors", "floor" ],
             ]
     @@unit_table = unit_table(UNITS)
 

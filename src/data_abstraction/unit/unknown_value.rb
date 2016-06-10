@@ -17,7 +17,7 @@ module DataAbstraction::Unit
       nil
     end
     def self.units
-      nil
+      UNITS
     end
     def to_standard
       self
