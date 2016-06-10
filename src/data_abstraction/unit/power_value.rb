@@ -3,7 +3,7 @@ module DataAbstraction::Unit
     STANDARD_UNIT = "W"
     UNITS = [
              [ "w",     "W" ],
-             [ "kw",    "kW", "KW" ],
+             [ "kw",    "KW", "kW" ],
              [ "mw",    "MW" ],
              [ "gw",    "GW" ],
              [ "milli_w", "mW" ],

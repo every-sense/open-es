@@ -3,7 +3,7 @@ module DataAbstraction::Unit
     STANDARD_UNIT = "Hz"
     UNITS = [
              [ "hz",  "Hz" ],
-             [ "khz", "kHz", "KHz" ],
+             [ "khz", "KHz", "kHz" ],
              [ "mhz", "MHz" ],
              [ "ghz", "GHz" ],
              [ "s",   "s" ],

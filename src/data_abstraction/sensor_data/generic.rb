@@ -39,18 +39,18 @@ module DataAbstraction::SensorData
     end
     def self.unpack(entry)
       #p entry['data_class_name']
-#      begin
+      begin
         DataAbstraction::SensorData.const_get(entry['data_class_name'].to_sym).new(entry['data'], entry)
-#      rescue NameError
-#        print "invalid data_class_name '#{entry['data_class_name']}' use Undef class\n"
-#        Undef.new(entry['data'], entry)
+      rescue NameError
+        print "invalid data_class_name '#{entry['data_class_name']}' use Undef class\n"
+        Undef.new(entry['data'], entry)
 #        exit
-#      rescue => e
-#        print e.to_s
-#        print $@.join("\n")
+      rescue => e
+        print e.to_s
+        print $@.join("\n")
 #        print "exit"
 #        exit
-#      end
+      end
     end
     def data_class_name
       self.class.to_s[29..-1]
@@ -207,6 +207,11 @@ module DataAbstraction::SensorData
     end
     def self.standard_unit
       nil
+    end
+    def self.units
+      self.unit_class.units.map do | el |
+        el[1]
+      end
     end
   end
 end
