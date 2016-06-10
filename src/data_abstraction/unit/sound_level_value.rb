@@ -3,7 +3,7 @@ module DataAbstraction::Unit
   class SoundLevelValue < Generic
     STANDARD_UNIT = "dB"
     UNITS = [
-             [ "db", "dB" ],
+             [ "db", "dB", "db" ],
              [ "pascal", "Pa" ]
             ]
     @@unit_table = unit_table(UNITS)

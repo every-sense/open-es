@@ -19,12 +19,16 @@ module DataAbstraction::SensorData
       h
     end
     @@datum_table = datum_table(DATUMS)
-    def initialize(data, meta_values = {})
-      super(data, meta_values)
+    def initialize(data, meta_values = {}, datum = STANDARD_DATUM)
+      data['datum'] = data['datum'] ? data['datum'] : datum
+      super(data, meta_values, nil)
       @value = DataAbstraction::Location.new(data)
     end
     def self.unit_class
       DataAbstraction::Unit::LocationValue
+    end
+    def self.standard_unit
+      STANDARD_DATUM
     end
   end
 end

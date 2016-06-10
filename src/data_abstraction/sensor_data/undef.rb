@@ -1,9 +1,9 @@
 module DataAbstraction::SensorData
   class Undef < Generic
-    def initialize(values, meta_values = {})
+    def initialize(data, meta_values = {}, unit = nil)
       @data_class_name = meta_values['data_class_name']
-      @data = values
-      super(values, meta_values)
+      @data = data
+      super(data, meta_values, unit)
     end
     def data_class_name
       @data_class_name
@@ -11,10 +11,5 @@ module DataAbstraction::SensorData
     def self.unit_class
       UnknownValue
     end
-#    def to_hash
-#      ret = super
-#      ret['data'] = @data
-#      ret
-#    end
   end
 end

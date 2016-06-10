@@ -210,6 +210,7 @@ sensors.each do | entry |
   print "#{val.class} -----\n"
   print "#{val.class.unit_class} -----\n"
   print "#{val.class.unit_class.units} -----\n"
+  print "#{val.class.standard_unit} -----\n"
   #p val
   p val.to_hash
   print val.to_hash.to_json, "\n"

@@ -1,10 +1,8 @@
 module DataAbstraction::SensorData
   class AngularVelocity < Generic
-    def initialize(data, meta_values = {})
-      super(data, meta_values)
-#      if ( @unit == "deg/s^2" )		# for bug fix
-#        @unit = "deg/s"
-#      end
+    STANDARD_UNIT = "deg/s"
+    def initialize(data, meta_values = {}, unit = STANDARD_UNIT)
+      super(data, meta_values, unit)
       @values = Array.new
       @values[0] = AngularVelocityValue.new(data['values'][0].to_f, @unit)
       @values[1] = AngularVelocityValue.new(data['values'][1].to_f, @unit)
@@ -15,6 +13,9 @@ module DataAbstraction::SensorData
     end
     def self.unit_class
       AngularVelocityValue
+    end
+    def self.standard_unit
+      STANDARD_UNIT
     end
   end
 end
