@@ -1,11 +1,15 @@
 module DataAbstraction::SensorData
   class Identifier < Generic
-    def initialize(values, meta_values = {})
-      super(values, meta_values)
-      @value = SimpleString.new(values['value'], @unit)
+    STANDARD_UNIT = nil
+    def initialize(data, meta_values = {}, unit = STANDARD_UNIT)
+      super(data, meta_values, unit)
+      @value = SimpleString.new(data['value'], @unit)
     end
     def self.unit_class
       SimpleString
+    end
+    def self.standard_unit
+      STANDARD_UNIT
     end
   end
 end
