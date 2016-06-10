@@ -5,7 +5,7 @@ module DataAbstraction::Unit
              [ "inch", "in", "inch" ],
              [ "feet", "ft", "feet" ],
              [ "yard", "yd", "yard" ],
-             [ "mile", "mile" ],
+             [ "mile", "mile", "mi" ],
              [ "milli_meter", "mm" ],
              [ "centi_meter", "cm" ],
              [ "meter", "m" ],
