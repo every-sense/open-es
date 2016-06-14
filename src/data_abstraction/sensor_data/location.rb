@@ -22,7 +22,11 @@ module DataAbstraction::SensorData
     def initialize(data, meta_values = {}, datum = STANDARD_DATUM)
       data['datum'] = data['datum'] ? data['datum'] : datum
       super(data, meta_values, nil)
-      @values = @location.location
+      if  ( @location )
+        @values = @location.location
+      else
+        @value = DataAbstraction::Location.new(data)
+      end
     end
     def self.unit_class
       DataAbstraction::Unit::LocationValue
