@@ -1,5 +1,7 @@
 module DataAbstraction::SensorData
   class Generic
+    CLASS_DEBUG = true
+
     include DataAbstraction::Unit
     def initialize(values, meta_values = {}, unit = nil)
       @sensor_class_name = meta_values['sensor_class_name']  if ( meta_values['sensor_class_name'] )
@@ -39,17 +41,20 @@ module DataAbstraction::SensorData
     end
     def self.unpack(entry)
       #p entry['data_class_name']
-      begin
+      if ( CLASS_DEBUG )
         DataAbstraction::SensorData.const_get(entry['data_class_name'].to_sym).new(entry['data'], entry)
-      rescue NameError
-        print "invalid data_class_name '#{entry['data_class_name']}' use Undef class\n"
-        Undef.new(entry['data'], entry)
-#        exit
-      rescue => e
-        print e.to_s
-        print $@.join("\n")
+      else
+        begin
+          DataAbstraction::SensorData.const_get(entry['data_class_name'].to_sym).new(entry['data'], entry)
+        rescue NameError
+          print "invalid data_class_name '#{entry['data_class_name']}' use Undef class\n"
+          Undef.new(entry['data'], entry)
+        rescue => e
+          print e.to_s
+          print $@.join("\n")
 #        print "exit"
 #        exit
+        end
       end
     end
     def data_class_name
