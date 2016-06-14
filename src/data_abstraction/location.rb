@@ -23,26 +23,38 @@ module DataAbstraction
     @@datum_table = datum_table(DATUMS)
 
     def initialize(values)
-      @dimension_unit = values['dimension_unit'] ? values['dimension_unit']  : "m"
-      @unit = values['unit'] ? values['unit'] : "degree"
-      @datum = ( values['datum'] ) ? values['datum'] : 'WGS84'
-      @values = Array.new
-      if ( values['values'] )
-        @values[0] = LocationValue.new(values['values'][0].to_f, @unit)
-        @values[1] = LocationValue.new(values['values'][1].to_f, @unit)
-        if  ( values['elevation'] )
-          @values[2] = DimensionValue.new(values['elevation'].to_f, @dimansion_unit)
-        else
-          if  ( values['values'].size == 3 )
-            @values[2] = DimensionValue.new(values['values'][2].to_f, @dimansion_unit)
+      if  ( values.instance_of? Hash )
+        @dimension_unit = values['dimension_unit'] ? values['dimension_unit']  : "m"
+        @unit = values['unit'] ? values['unit'] : "degree"
+        @datum = ( values['datum'] ) ? values['datum'] : 'WGS84'
+        @values = Array.new
+        if ( values['values'] )
+          @values[0] = LocationValue.new(values['values'][0].to_f, @unit)
+          @values[1] = LocationValue.new(values['values'][1].to_f, @unit)
+          if  ( values['elevation'] )
+            @values[2] = DimensionValue.new(values['elevation'].to_f, @dimansion_unit)
           else
-            @values[2] = DimensionValue.new(0.0, @dimansion_unit)
+            if  ( values['values'].size == 3 )
+              @values[2] = DimensionValue.new(values['values'][2].to_f, @dimansion_unit)
+            else
+              @values[2] = DimensionValue.new(0.0, @dimansion_unit)
+            end
           end
+        else
+          @values[0] = LocationValue.new(values['latitude'].to_f, @unit)
+          @values[1] = LocationValue.new(values['longitude'].to_f, @unit)
+          @values[2] = DimensionValue.new(values['elevation'].to_f, @dimansion_unit)
+        end
+      elsif ( values.instance_of? Array )
+        @values = Array.new
+        @values[0] = LocationValue.new(values[0].to_f, @unit)
+        @values[1] = LocationValue.new(values[1].to_f, @unit)
+        if  ( values.size == 3 )
+          @values[2] = DimensionValue.new(values[2].to_f, @dimansion_unit)
+        else
+          @values[2] = DimensionValue.new(0.0, @dimansion_unit)
         end
       else
-        @values[0] = LocationValue.new(values['latitude'].to_f, @unit)
-        @values[1] = LocationValue.new(values['longitude'].to_f, @unit)
-        @values[2] = DimensionValue.new(values['elevation'].to_f, @dimansion_unit)
       end
     end
     def location(dim = 2)
