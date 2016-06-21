@@ -79,6 +79,9 @@ module DataAbstraction
     def elevation
       @values[2]
     end
+    def elevation=(val)
+      @values[2] = val
+    end
     def longitude
       @values[1]
     end
