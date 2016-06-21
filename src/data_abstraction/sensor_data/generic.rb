@@ -22,6 +22,9 @@ module DataAbstraction::SensorData
       end
       if  ( values['location'] )
         @location = DataAbstraction::Location.new(values['location'])
+        if ( values['elevation'] )
+          @location.elevation = DimensionValue.new(values['elevation'].to_f, @dimansion_unit)
+        end
       elsif (( values['longtude'] ) ||
              ( values['latitude'] ) ||
              ( values['elevation'] ))
