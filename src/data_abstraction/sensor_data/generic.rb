@@ -14,7 +14,8 @@ module DataAbstraction::SensorData
       @farm_uuid = meta_values['farm_uuid'] if ( meta_values['farm_uuid'] )
       if ( values['at'] )
         at = values['at']
-        if ( at.instance_of? Time )
+        if (( at.instance_of? Time ) ||
+            ( at.instance_of? DateTime ))
           @at = at
         elsif ( at.instance_of? String )
           @at = Time.parse(at)
