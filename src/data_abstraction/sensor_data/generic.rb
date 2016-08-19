@@ -154,7 +154,7 @@ module DataAbstraction::SensorData
       "{\"sensor_name\":\"#{self.sensor_name}\"," +
         "\"data\":{\"at\":\"#{at.year}-#{at.mon}-#{at.day} #{at.hour}:#{at.min}:#{at.sec}.#{at.usec/1000} +0000\"," +
         "#{self.build_part}}" +
-        ( @location ) ? ",\"location\":[\"#{@location[0]}\",\"#{@location[1]}\",\"#{@location[2]}\"],\"datum\":\"#{@datum}\"" : "" +
+        ( @location ? ",\"location\":[\"#{@location[0]}\",\"#{@location[1]}\",\"#{@location[2]}\"],\"datum\":\"#{@datum}\"" : "" ) +
         "}"
     end
     def build_part
