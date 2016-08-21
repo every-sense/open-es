@@ -124,6 +124,14 @@ module DataAbstraction::SensorData
         nil
       end
     end
+    def clear_value
+      if ( defined? @value )
+        @value = nil
+      end
+      if ( defined? @values )
+        @values = nil
+      end
+    end
     def values
       if ( defined? @values )
         @values
