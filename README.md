@@ -1,7 +1,7 @@
 Open ES
 =======
 
-Open ES is a [[EverySense](http://every-sense.com)] data handling library.
+Open ES is a EverySense](http://every-sense.com) data handling library.
 
 ## directory
 
