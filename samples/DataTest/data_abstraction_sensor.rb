@@ -203,6 +203,12 @@ sensors = [
                'value' => 4,
                'unit' => 'm^3/s'
              }
+           }, {
+             'data_class_name' => 'WaterRate',
+             'data' => {
+               'value' => 80,
+               'unit' => '%'
+             }
            }
           ]
 

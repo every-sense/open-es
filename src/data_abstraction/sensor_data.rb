@@ -37,4 +37,5 @@ require_relative 'sensor_data/person_exercise_kind'
 
 # 2016.8.27
 require_relative 'sensor_data/water_volume'
+require_relative 'sensor_data/water_rate'
 require_relative 'sensor_data/water_flow_volume'
