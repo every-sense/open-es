@@ -192,6 +192,17 @@ sensors = [
              'data' => {
                'value' => 20
              }
+           }, {
+             'data_class_name' => 'WaterVolume',
+             'data' => {
+               'value' => 14000000
+             }
+           }, {
+             'data_class_name' => 'WaterFlowVolume',
+             'data' => {
+               'value' => 4,
+               'unit' => 'm^3/s'
+             }
            }
           ]
 
