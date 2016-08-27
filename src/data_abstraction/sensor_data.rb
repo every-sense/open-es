@@ -34,3 +34,7 @@ require_relative 'sensor_data/person_expenditure_calory'
 require_relative 'sensor_data/person_activity_duration'
 require_relative 'sensor_data/person_sleep_quality'
 require_relative 'sensor_data/person_exercise_kind'
+
+# 2016.8.27
+require_relative 'sensor_data/water_volume'
+require_relative 'sensor_data/water_flow_volume'

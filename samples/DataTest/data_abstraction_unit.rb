@@ -7,7 +7,6 @@ require 'data_abstraction'
 AccelerationValue
 AngularAccelerationValue
 AngularVelocityValue
-ConcentrationValue
 CycleValue
 DimensionValue
 DirectionValue
@@ -30,6 +29,10 @@ CountValue
 MagnitudeValue
 DurationValue
 EnergyValue
+VolumeValue
+ConcentrationValue
+RateValue
+FlowVolumeValue
 }.each do | name |
   klass = DataAbstraction::Unit.const_get(name.to_sym)
   print "#{klass} ---\n"

@@ -16,6 +16,7 @@ require_relative 'unit/step_value'
 require_relative 'unit/illuminance_value'
 require_relative 'unit/cycle_value'
 require_relative 'unit/power_value'
+require_relative 'unit/rate_value'
 require_relative 'unit/concentration_value'
 require_relative 'unit/conductivity_value'
 
@@ -28,3 +29,6 @@ require_relative 'unit/magnitude_value'
 
 require_relative 'unit/duration_value'
 require_relative 'unit/energy_value'
+
+require_relative 'unit/volume_value'
+require_relative 'unit/flow_volume_value'
