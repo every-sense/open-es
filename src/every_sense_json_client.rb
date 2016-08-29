@@ -3,6 +3,7 @@ require 'net/http'
 require 'uri'
 require 'cgi'
 require 'json'
+require 'mime/types'
 
 module EverySense
   MAX_RETRY = 5
@@ -64,11 +65,43 @@ module EverySense
       end
     end
     def _post(func, data = nil, limit = 10)
+      p data
+      boundary = "boundary"
       raise ArgumentError, 'HTTP redirect too deep' if limit == 0
-      req = Net::HTTP::Post.new("/#{func}", {
-                                  'Content-Type' => 'application/json'} )
+      multipart = {}
+      data.each do | rec |
+        if ( name = rec['data']['filename'] )
+          rec['data']['filename'] = File.basename(name)
+          multipart[File.basename(name)] = name
+        end
+      end
+      if ( multipart.size > 0 )
+        body = Array.new
+        body << "--#{boundary}\r\n"
+        body << "Content-Disposition: form-data; name=\"json\";\r\n"
+        body << "Content-Type: application/json\r\n\r\n"
+        body << data.to_json
+        body << "\r\n"
+        multipart.each do | name, filename |
+          body << "--#{boundary}\r\n"
+          body << "Content-Disposition: form-data; name=\"#{name}\"; filename=\"#{filename}\";\r\n"
+          body << "Content-Type: #{MIME::Types.type_for(filename)}\r\n\r\n"
+          File.open(filename, "r") do | file |
+            body << file.read
+            body << "\r\n"
+          end
+        end
+        body << "--#{boundary}--\r\n"
 
-      req.body = data.to_json
+        req = Net::HTTP::Post.new("/#{func}")
+        req.set_content_type("multipart/form-data; boundary=#{boundary}")
+        req.body = body.join
+      else
+        req = Net::HTTP::Post.new("/#{func}", {
+                                    'Content-Type' => 'application/json'} )
+        
+        req.body = data.to_json
+      end
       retry_count = @max_retry
       res = Net::HTTP.new(@host, @port).start do | http |
         http.open_timeout = @open_timeout
