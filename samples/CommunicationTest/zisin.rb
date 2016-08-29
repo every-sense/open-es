@@ -5,11 +5,12 @@ require 'uri'
 require 'cgi'
 require 'json'
 require 'open-uri'
-require_relative 'data_abstraction'
-require_relative 'every_sense_json_client'
+$LOAD_PATH << "./libs"
+require 'data_abstraction'
+require 'every_sense_json_client'
 
 HISTORY_FILE = './quakes'
-UUID = '** device UUID'
+UUID = '4243a93b-8672-484e-90c1-6f970addbc23'
 port = 7001
 
 def get_list
@@ -18,6 +19,7 @@ def get_list
   open("http://zish.in/#{uri}") do | f |
     ret = JSON.parse(f.read)
   end
+#  p ret
   ret
 end
 def get_detail(id = nil)
@@ -35,7 +37,7 @@ when "local"
   server = "localhost"
 when "server"
   history_file = './quakes.server'
-  server = "api.every-sense.com"
+  server = "www.folloger.com"
 else
   history_file = ARGV[0]
   server = ARGV[1]
