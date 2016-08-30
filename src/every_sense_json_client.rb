@@ -4,6 +4,7 @@ require 'uri'
 require 'cgi'
 require 'json'
 require 'mime/types'
+require 'digest/sha1'
 
 module EverySense
   MAX_RETRY = 5
