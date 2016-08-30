@@ -65,8 +65,7 @@ module EverySense
       end
     end
     def _post(func, data = nil, limit = 10)
-      p data
-      boundary = "boundary"
+      boundary = Digest::SHA1.hexdigest(Time.now.to_s)
       raise ArgumentError, 'HTTP redirect too deep' if limit == 0
       multipart = {}
       data.each do | rec |
@@ -83,18 +82,25 @@ module EverySense
         body << data.to_json
         body << "\r\n"
         multipart.each do | name, filename |
+          file_data = nil
+          File.open(filename, "r") do | file |
+            file_data = file.read
+          end
+
           body << "--#{boundary}\r\n"
           body << "Content-Disposition: form-data; name=\"#{name}\"; filename=\"#{filename}\";\r\n"
-          body << "Content-Type: #{MIME::Types.type_for(filename)}\r\n\r\n"
-          File.open(filename, "r") do | file |
-            body << file.read
-            body << "\r\n"
-          end
+          body << "Content-Transfer-Encoding: binary\r\n"
+          body << "Content-Type: #{MIME::Types.type_for(filename)}\r\n"
+          body << "Content-Length: #{file_data.size}\r\n"
+          body << "\r\n"
+          body << file_data
+          body << "\r\n"
         end
         body << "--#{boundary}--\r\n"
+        #p body
 
         req = Net::HTTP::Post.new("/#{func}")
-        req.set_content_type("multipart/form-data; boundary=#{boundary}")
+        req.set_content_type("multipart/form-data, boundary=#{boundary}")
         req.body = body.join
       else
         req = Net::HTTP::Post.new("/#{func}", {

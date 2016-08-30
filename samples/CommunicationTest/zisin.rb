@@ -9,6 +9,8 @@ $LOAD_PATH << "./libs"
 require 'data_abstraction'
 require 'every_sense_json_client'
 
+ENV['TZ'] = 'Asia/Tokyo'
+
 HISTORY_FILE = './quakes'
 UUID = '4243a93b-8672-484e-90c1-6f970addbc23'
 port = 7001
@@ -31,17 +33,8 @@ def get_detail(id = nil)
   ret
 end
 
-case ARGV[0]
-when "local"
-  history_file = './quakes.local'
-  server = "localhost"
-when "server"
-  history_file = './quakes.server'
-  server = "www.folloger.com"
-else
-  history_file = ARGV[0]
-  server = ARGV[1]
-end
+history_file = './quakes'
+server = "localhost"
 
 ids = Hash.new
 begin
