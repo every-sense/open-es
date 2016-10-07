@@ -209,6 +209,25 @@ sensors = [
                'value' => 80,
                'unit' => '%'
              }
+           }, {
+             'data_class_name' => 'WiFiList',
+             'data' => {
+               'values' => [{
+                              'SSID' => "aaa",
+                              'RSSI' => -30
+                            },{
+                              'SSID' => "bbb",
+                              'RSSI' => -40
+                            },{
+                              'SSID' => "ccc",
+                              'RSSI' => -20
+                            }]
+             }
+           }, {
+             'data_class_name' => 'Advertising_ID',
+             'data' => {
+               'value' => "aaa"
+               }
            }
           ]
 

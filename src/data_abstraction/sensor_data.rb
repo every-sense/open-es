@@ -39,3 +39,7 @@ require_relative 'sensor_data/person_exercise_kind'
 require_relative 'sensor_data/water_volume'
 require_relative 'sensor_data/water_rate'
 require_relative 'sensor_data/water_flow_volume'
+
+# 2016.10.07
+require_relative 'sensor_data/wifi_list'
+require_relative 'sensor_data/advertising_id'

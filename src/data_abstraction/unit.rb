@@ -32,3 +32,5 @@ require_relative 'unit/energy_value'
 
 require_relative 'unit/volume_value'
 require_relative 'unit/flow_volume_value'
+
+require_relative 'unit/receive_signal_level_value'
