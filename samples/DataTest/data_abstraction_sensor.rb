@@ -214,13 +214,16 @@ sensors = [
              'data' => {
                'values' => [{
                               'SSID' => "aaa",
-                              'RSSI' => -30
+                              'RSSI' => -30,
+                              'capabilities' => 'aaa,bbb,ccc'
                             },{
                               'SSID' => "bbb",
-                              'RSSI' => -40
+                              'RSSI' => -40,
+                              'capabilities' => 'bbb,ccc,ddd'
                             },{
                               'SSID' => "ccc",
-                              'RSSI' => -20
+                              'RSSI' => -20,
+                              'capabilities' => 'ccc,ddd,eee'
                             }]
              }
            }, {

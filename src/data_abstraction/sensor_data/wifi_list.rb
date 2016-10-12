@@ -8,7 +8,8 @@ module DataAbstraction::SensorData
         data['values'].each do | value |
           @values << {
             'SSID' => SymbolicValue.new(value['SSID']),
-            'RSSI' => ReceiveSignalLevelValue.new(value['RSSI'].to_f, @unit)
+            'RSSI' => ReceiveSignalLevelValue.new(value['RSSI'].to_f, @unit),
+            'capabilities' => SimpleString.new(value['capabilities'])
           }
         end
       end
@@ -16,7 +17,8 @@ module DataAbstraction::SensorData
         data['value'].each do | value |
           @values << {
             'SSID' => SymbolicValue.new(value['SSID']),
-            'RSSI' => ReceiveSignalLevelValue.new(value['RSSI'].to_f, @unit)
+            'RSSI' => ReceiveSignalLevelValue.new(value['RSSI'].to_f, @unit),
+            'capabilities' => SimpleString.new(value['capabilities'])
           }
         end
       end
@@ -26,7 +28,8 @@ module DataAbstraction::SensorData
       @values.each do | value |
         new_values << {
           'SSID' => value['SSID'],
-          'RSSI' => value['RSSI'].to_requested(unit)
+          'RSSI' => value['RSSI'].to_requested(unit),
+          'capabilities' => value['capabilities']
         }
       end
       @values = new_values
