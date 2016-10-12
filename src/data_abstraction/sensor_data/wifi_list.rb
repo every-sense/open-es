@@ -21,6 +21,17 @@ module DataAbstraction::SensorData
         end
       end
     end
+    def to_requested!(unit = nil)
+      new_values = Array.new
+      @values.each do | value |
+        new_values << {
+          'SSID' => value['SSID'],
+          'RSSI' => value['RSSI'].to_requested(unit)
+        }
+      end
+      @values = new_values
+      @unit = unit
+    end
     def self.unit_class
       ReceiveSignalLevelValue
     end

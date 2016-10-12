@@ -251,6 +251,8 @@ sensors.each do | entry |
   #p val
   p val.to_hash
   print val.to_hash.to_json, "\n"
+  val.to_requested!(val.class.units[0])
+  print "requested ", val.to_hash.to_json, "\n"
   #print val.build_part, "\n"
   i += 1
 end
