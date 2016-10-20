@@ -234,7 +234,8 @@ sensors = [
            }, {
              'data_class_name' => 'RainAccumlation',
              'data' => {
-               'value' => 20
+               'value' => 20,
+               'duration' => 3600
              }
            }, {
              'data_class_name' => 'RainRate',
