@@ -46,3 +46,4 @@ require_relative 'sensor_data/advertising_id'
 
 # 2016.10.18
 require_relative 'sensor_data/rain_accumlation'
+require_relative 'sensor_data/rain_rate'

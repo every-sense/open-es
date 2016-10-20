@@ -236,6 +236,11 @@ sensors = [
              'data' => {
                'value' => 20
              }
+           }, {
+             'data_class_name' => 'RainRate',
+             'data' => {
+               'value' => 20
+             }
            }
           ]
 
