@@ -2,6 +2,7 @@ module DataAbstraction::Unit
   class SpeedValue < Generic
     STANDARD_UNIT = "m/s"
     UNITS = [
+             [ "mm/h", "mm/h" ],
              [ "m/s", "m/s" ],
              [ "cm/s", "cm/s" ],
              [ "Km/s", "Km/s" ]
@@ -28,6 +29,8 @@ module DataAbstraction::Unit
     end
     def to_standard
       case @@unit_table[@unit]
+      when "mm/h"
+        SpeedValue.new(@value / ( 3600.0 * 1000.0 ), STANDARD_UNIT)
       when "cm/s"
         SpeedValue.new(@value / 100.0, STANDARD_UNIT)
       when "Km/s"
@@ -40,6 +43,8 @@ module DataAbstraction::Unit
       if ( unit != @unit )
         standard = self.to_standard
         case @@unit_table[unit]
+        when "mm/h"
+          SpeedValue.new(@value * ( 3600.0 * 1000.0 ), unit)
         when "cm/s"
           SpeedValue.new(standard.value * 100.0, unit)
         when "Km/s"
