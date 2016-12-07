@@ -70,7 +70,8 @@ module EverySense
       raise ArgumentError, 'HTTP redirect too deep' if limit == 0
       multipart = {}
       data.each do | rec |
-        if ( name = rec['data']['filename'] )
+        if  ( rec['data'] ) &&
+            ( name = rec['data']['filename'] )
           rec['data']['filename'] = File.basename(name)
           multipart[File.basename(name)] = name
         end
